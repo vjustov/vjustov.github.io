@@ -3,7 +3,7 @@ title_left    : "blog."
 title_right   : "vjustov.me" # default: ""
 description   : "The mussings of a guy who codes."
 keywords      : "code, ruby, elixir, programming, blog"
-url           : https://vjustov.me # site url
+url           : http://vjustov.me # site url
 baseurl       : "" # apply repo name like "/myproject" if used under gh-pages branch, else (under master branch) just leave empty/blank
 cover         : "" # image uri like logo/cover image for site seo
 
