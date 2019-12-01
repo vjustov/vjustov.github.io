@@ -12,7 +12,7 @@ You decide to pave the road ahead and want to install all you'll ever need for y
 
 In building my actual development environment for my x64 i have come across my fair share of roadblocks and issues that would have been easily avoided had I known all this. My goal is for this environment to be easy to use, easy to adopt and flexible enough to at the least \"try\" to catch up onto ruby for other platforms. Needless to say, ruby on windows is kinda like IE in the browser wars.
 
-###TL;DR
+### TL;DR
 In order to have an awesome webdev env:
 
 * Install ruby/rails.
@@ -22,7 +22,7 @@ In order to have an awesome webdev env:
 * Use Vagrant for sharing your development env with other devs.
 
 -----------------------
-Before we start with anything, i must say that i encourage this setup if you are planning on toying with ruby on the long run. if you only wanna try rails to see if it fits your needs then you can make do with just the rails installer. It is strongly recomended that your user does not contain any spaces in its username. For those of you still using XP you have two options: one is setting a `%PIK_HOME%` to a folder without spaces, that folder will become the place were pik will download and install all gems and rubiesand the other one is to create a symbolic link to the `C:/document and settings/{{USER}}` folder and use that to \"mask\" the spaces.
+Before we start with anything, I must say that I encourage this setup if you are planning on toying with ruby on the long run. if you only wanna try rails to see if it fits your needs then you can make do with just the rails installer. It is strongly recomended that your user does not contain any spaces in its username. For those of you still using XP you have two options: one is setting a `%PIK_HOME%` to a folder without spaces, that folder will become the place were pik will download and install all gems and rubiesand the other one is to create a symbolic link to the `C:/document and settings/{{USER}}` folder and use that to \"mask\" the spaces.
 **UPDATE:** If you ever plan on debugging gems (and you eventually will.). you must set a `%BUNDLE_EDITOR%` to the path of your editor of choice in order to use `>bundle open`.
 
 If you are like me, you probably went the \"[RubyInstaller](http://rubyinstaller.org/) (or [RailsInstaller](http://rubyinstaller.org/) for that matter.) way\", which works marvelously and i wouldnt recommend any other way. Luis Lavena and the crew at OneClick have done a marvelous job into making ruby to run as smoothly as posible with Win32 (But this is another topic.).
