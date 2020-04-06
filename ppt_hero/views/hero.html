@@ -1,0 +1,64 @@
+<div ng-controller="HeroCtrl"><div class="alert alert-info" ng-show="status">{{status}}</div><section id="main" class="panel panel-default"><!-- This code will be used in the future for templating purposes --><!-- <ul class="">
+		<li ng-repeat="hero in heroesData">
+			<h4 class="heroname"><a href="#">{{hero.name}}</a></h4>,is my name. I am a {{hero.race}} from the highlands at the west, a fine {{hero.job}}, if you ask me, and
+			my mighty weapon is the {{hero.weapon}}
+			<button type="button" class="btn btn-primary" ng-show="hero.editable" ng-click="updateHero(hero)">Grabar</button>
+					<button type="button" class="btn btn-primary" ng-show="!hero.editable" ng-click="edit(heroes[$index])" data-toggle="modal" data-target="#creationModal">Edit</button>
+					<button type="button" class="btn btn-danger" ng-click="deleteHero(hero.id)">Delete</button>
+		</li>
+	</ul> --><table class="table"><thead><tr class="row"><th class="col-md-2">Hero<th class="col-md-2">Sex<th class="col-md-2">Race<th class="col-md-2">Job<th class="col-md-2">Weapon<th class="col-md-3"><button type="button" class="btn btn-primary btn-lg" ng-click="tooglePushable(hero)" data-toggle="modal" data-target="#creationModal">Add another hero</button><tbody><tr class="row" ng-repeat="hero in heroesData"><td class="col-md-2">{{hero.name}}<td class="col-md-2">{{hero.sex}}<td class="col-md-2">{{hero.race}}<td class="col-md-2">{{hero.job}}<td class="col-md-2">{{hero.weapon}}<td class="col-md-3"><button type="button" class="btn btn-primary" ng-show="!hero.editable" ng-click="edit(heroes[$index])" data-toggle="modal" data-target="#creationModal">Edit</button> <button type="button" class="btn btn-danger" ng-click="deleteHero(hero.id)">Delete</button></table></section><!-- Modal --><div class="modal fade" id="creationModal" tabindex="-1" role="dialog" aria-labelledby="creationModalLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="creationModalLabel">Add another hero</h4></div><div class="modal-body"><br><br><br><br><br>What is your name?<input class="form-control" type="text" ng-model="hero.name"><br><span ng-show="!hero.sex">Are you a boy or a girl?</span> <span ng-show="hero.sex">{{hero.sex}}</span> <!-- <div class="clearfix"></div> --><div class="arrow-sex-left arrow-left" ng-click="changeSex()"><span class="glyphicon glyphicon-chevron-left"></span></div><div class="arrow-sex-right arrow-right" ng-click="changeSex()"><span class="glyphicon glyphicon-chevron-right"></span></div><div class="clearfix"></div><br><span ng-show="!hero.race_id">Lineage</span> <span ng-show="hero.race_id">{{race}}</span> <!-- <div class="clearfix"></div> --><div class="arrow-race-left arrow-left" ng-click="changeRace('prev')"><span class="glyphicon glyphicon-chevron-left"></span></div><div class="arrow-race-right arrow-right" ng-click="changeRace('next')"><span class="glyphicon glyphicon-chevron-right"></span></div><div class="clearfix"></div><br>What will earn you living?<select class="form-control" ng-model="hero.job_id" ng-options="j.id as j.name for j in jobs"></select><br>Select your companion:<select class="form-control" ng-model="hero.weapon_id" ng-options="w.id as w.name for w in weapons"></select><div class="hero"></div></div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button> <button type="button" class="btn btn-primary" ng-show="!hero.editable" ng-click="createHero(hero)" data-dismiss="modal" data-target="#creationModal">Save hero</button> <button type="button" class="btn btn-primary" ng-show="hero.editable" ng-click="updateHero(hero)" data-dismiss="modal" data-target="#creationModal">Edit hero</button></div></div><!-- /.modal-content --></div><!-- /.modal-dialog --></div><!-- /.modal --></div><script type="text/javascript">function toggleSex(hero){
+	if (hero.css('background-image').indexOf('fem') > -1){
+		hero.css('background-image','url(/images/heroes/human-male.png)');
+	}
+	else
+	{
+		hero.css('background-image','url(/images/heroes/human-fem.png)');
+	}
+}
+
+$('.arrow-sex-left, .arrow-sex-right').click(function(){
+  var hero = $('.hero'); 
+  hero.slideToggle('fast', function(){
+  	toggleSex(hero);
+  hero.slideToggle();
+});
+});
+
+$('.arrow-race-left, .arrow-race-right').click(function(){
+	var hero = $('.hero'); 
+	var bgHero = hero.css('background-image').replace('http://127.0.0.1:9000', '');
+	var direction = this.className.indexOf('arrow-race-right') > -1 ? 1 : -1
+
+	hero.slideToggle('fast', function(){
+	  	
+	  	
+	  	if (hero.css('background-image').indexOf('fem') > -1){
+			changeRaceSprite('fem', hero, bgHero, direction);
+	  	}
+	  	else {
+			changeRaceSprite('male', hero, bgHero, direction);
+	  	}
+	  	hero.slideToggle();
+
+	});
+});
+
+function changeRaceSprite(sex, hero, spriteHero, direction){
+	var races = [
+	  	'url(/images/heroes/human-fem.png)',
+		'url(/images/heroes/floran-fem.png)',
+		'url(/images/heroes/avian-fem.png)',
+		'url(/images/heroes/glitch-fem.png)',
+		'url(/images/heroes/human-male.png)',
+		'url(/images/heroes/floran-male.png)',
+		'url(/images/heroes/avian-male.png)',
+		'url(/images/heroes/glitch-male.png)'
+	  	];
+			var bgs = races.filter(function(race){
+				return race.indexOf('male') > -1;
+			})
+			var index = bgs.indexOf(spriteHero) + direction;
+			if (index >= 0 && index < bgs.length) {
+	  			hero.css('background-image', bgs[index]);
+	  		}
+}</script>
