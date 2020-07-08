@@ -3,7 +3,7 @@ layout: post
 title: "The quest for a sane ruby environment on windows x64"
 description: "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."
 comments: true
-keywords: "dummy content, lorem ipsum"
+keywords: "ruby, windows, x64"
 ---
 
 You tried ruby in a class and are starting to think about installing it on your laptop and using it for a forthcoming proyect. You google a bit and notice that most of the ruby comunity runs on macs and ubuntu's, some of them VMs, for some particular reason you dont want to run a full Virtual machine to code in and your workflow in windows is smooth enough to give it a try (or perhaps you are a windows fanboy).
